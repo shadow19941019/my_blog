@@ -1,0 +1,6 @@
+{% include "header.html" %}<h1>{{ "Edit Post" if is_edit else "New Post" }}</h1>
+<form method="post">{{ form.hidden_tag() }}
+    {% for field in [form.title, form.subtitle, form.img_url, form.body] %}
+    <div class="mb-3">{{ field.label(class_="form-label") }}{{ field(class_="form-control") }}</div>
+    {% endfor %}{{ form.submit(class_="btn btn-primary") }}
+</form>{{ ckeditor.config(name='body') }}{% include "footer.html" %}
